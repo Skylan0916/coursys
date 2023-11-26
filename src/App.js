@@ -1,40 +1,47 @@
 import './App.css';
 import { Amplify } from 'aws-amplify';
-import { generateClient } from 'aws-amplify/api';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import config from './amplifyconfiguration.json';
-import { listClasses, listCourses } from './graphql/queries';
-import { useEffect, useState } from 'react';
+import Sidebar from './Components/Sidebar';
+import Course from "./Components/Course";
+import Browse from "./Components/Browse";
+import Progress from "./Components/Progress";
+import Advising from "./Components/Advising";
+import Profile from "./Components/Profile";
 
 Amplify.configure(config);
-const client = generateClient();
 
 function App({ signOut, user }) {
-  const [course, setCourse] = useState([]);
-
-  async function fetchCourse() {
-    const { data } = await client.graphql({
-      query: listCourses
-    });
-    setCourse(data.listCourses.items)
-    console.log(data);
-  }
-
-  useEffect(() => {
-    fetchCourse();
-  }, []);
-
   return (
-    <>
-      <h1>Hello {user.username}</h1>
-      <ul>
-        {course.map(item =>
-          <li key={ item.id }>{item.title}</li>)
-        }
-      </ul>
-      <button onClick={signOut}>Sign out</button>
-    </>
+    <div className="App">
+
+      <Sidebar />
+
+      <div className="Path">
+        Path / Placeholder / text
+      </div>
+
+      <div className="Session">
+        Logged in as {user.username}. <a className="SignOut" onClick={signOut}>Sign out</a>
+      </div>
+
+      <div className="Content">
+        <Router>
+          <Routes>
+            <Route exact path="/course" element={<Course />} />
+            <Route exact path="/browse" element={<Browse />} />
+            <Route exact path="/progress" element={<Progress />} />
+            <Route exact path="/advising" element={<Advising />} />
+            <Route exact path="/profile" element={<Profile />} />
+            <Route path="*" element={<Course />} />
+          </Routes>
+        </Router>
+      </div>
+
+    </div>
   );
 }
 

@@ -1,38 +1,105 @@
+.css-i4bv87-MuiSvgIcon-root {
+  font-size: 2rem !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 360px 1fr;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Path message */
+.Path {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  text-align: left;
+  padding: 2em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Session message */
+.Session {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  text-align: right;
+  padding: 2em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.SignOut {
+  text-decoration: none;
+  color: #0849A3;
+}
+
+.SignOut:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Main content */
+.Content {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  padding: 2em;
+}
+
+/* Navigation Panel */
+.Sidebar {
+  height: 100%;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  background-color: #B3E0FF;
+}
+
+.SidebarList {
+  height: auto;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.SidebarList .row {
+  width: 100%;
+  height: 100px;
+  list-style-type: none;
+  margin: 0%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+.SidebarList .row:hover {
+  cursor: pointer;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.SidebarList #active {
+  font-weight: bold;
+}
+
+.row #icon {
+  flex: 25%;
+  display: grid;
+  place-items: center;
+}
+
+.row #title {
+  flex: 75%;
+  display: grid;
+  place-items: center start;
+  font-size: 20px;
 }
