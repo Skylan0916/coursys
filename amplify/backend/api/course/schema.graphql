@@ -1,0 +1,25 @@
+type Course @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  subject: String!
+  number: Int!
+  point: Int!
+  title: String!
+  description: String!
+  is_required: Boolean!
+  is_breath: Boolean!
+  is_elective: Boolean!
+  classes: [Class] @hasMany
+}
+
+type Class @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  title: String!
+  instructor: String!
+  semester: String!
+  time: String!
+  campus: String!
+  description: String!
+  capacity: Int!
+  enrollment: Int!
+  course: Course @belongsTo
+}

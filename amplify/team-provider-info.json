@@ -10,6 +10,14 @@
       "StackName": "amplify-coursys-dev-140737",
       "StackId": "arn:aws:cloudformation:us-east-1:243503073604:stack/amplify-coursys-dev-140737/e1cff360-8b15-11ee-a35b-0edadd90fda9",
       "AmplifyAppId": "d1cjz4fi0scgrw"
+    },
+    "categories": {
+      "auth": {
+        "coursysf9a6aa9f": {}
+      },
+      "api": {
+        "course": {}
+      }
     }
   }
 }

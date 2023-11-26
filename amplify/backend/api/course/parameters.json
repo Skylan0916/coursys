@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "course",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authcoursysf9a6aa9f",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
