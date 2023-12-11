@@ -2,7 +2,7 @@ import './App.css';
 import { Amplify } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import config from './amplifyconfiguration.json';
 import Sidebar from './Components/Sidebar';
@@ -29,16 +29,16 @@ function App({ signOut, user }) {
       </div>
 
       <div className="Content">
-        <Router>
+        <BrowserRouter>
           <Routes>
-            <Route exact path="/course" element={<Course />} />
-            <Route exact path="/browse" element={<Browse />} />
-            <Route exact path="/progress" element={<Progress />} />
-            <Route exact path="/advising" element={<Advising />} />
-            <Route exact path="/profile" element={<Profile />} />
-            <Route path="*" element={<Course />} />
+            <Route path="/course" element={<Course />} />
+            <Route path="/browse" element={<Browse />} />
+            <Route path="/progress" element={<Progress />} />
+            <Route path="/advising" element={<Advising />} />
+            <Route path="/profile" element={<Profile />} />
+            {/* <Route path="/" element={<Course />} /> */}
           </Routes>
-        </Router>
+        </BrowserRouter>
       </div>
 
     </div>
