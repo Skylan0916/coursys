@@ -5,7 +5,7 @@ import { generateClient } from 'aws-amplify/api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { SubjectData } from '../data/Subject';
+import { SubjectData } from './SubjectData';
 import { stringToHash } from '../utils'
 
 const client = generateClient();

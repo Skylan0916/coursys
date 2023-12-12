@@ -3,7 +3,7 @@ import React from 'react';
 const Browse = () => {
   return (
     <div>
-      This is the Browse page!
+      <h1>Browse Course Offerings</h1>
     </div>
   )
 }

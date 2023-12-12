@@ -5,13 +5,13 @@ import '@aws-amplify/ui-react/styles.css';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import config from './amplifyconfiguration.json';
-import Sidebar from './components/Sidebar';
-import Course from "./components/Course";
-import Browse from "./components/Browse";
-import Progress from "./components/Progress";
-import Advising from "./components/Advising";
-import Profile from "./components/Profile";
-import Admin from "./components/Admin";
+import Sidebar from './Components/Sidebar';
+import Course from "./Components/Course";
+import Browse from "./Components/Browse";
+import Progress from "./Components/Progress";
+import Advising from "./Components/Advising";
+import Profile from "./Components/Profile";
+import Admin from "./Components/Admin";
 
 Amplify.configure(config);
 

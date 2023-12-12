@@ -23,7 +23,7 @@ const Course = () => {
 
   return (
     <div>
-      This is the Course page!
+      <h1>Courses</h1>
 
       <ul>
         {course.map(item =>
