@@ -1,6 +1,6 @@
 import '../App.css';
 import React from 'react';
-import { SidebarData } from './SidebarData';
+import { SidebarData } from '../data/Sidebar';
 
 function Sidebar() {
     return (

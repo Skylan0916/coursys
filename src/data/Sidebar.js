@@ -28,7 +28,12 @@ export const SidebarData = [
         link: "/advising"
     },
     {
-        title: "Student Profile",
+        title: "Administration",
+        icon: <ListAltIcon />,
+        link: "/admin"
+    },
+    {
+        title: "Profile",
         icon: <PersonIcon />,
         link: "/profile"
     }

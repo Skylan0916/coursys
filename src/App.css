@@ -7,11 +7,38 @@ body {
   padding: 0;
 }
 
+/* Heading */
+h2 {
+  text-align: center;
+}
+
+/* Form */
+form {
+  background-color: #DBE9FA;
+  text-align: center; 
+}
+
+form li {
+  display: inline-block;
+  text-align: center;
+  margin: 1em 1em
+}
+
+form li label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type='number']{
+  width: 80px;
+} 
+
+/* App */
 .App {
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-rows: 100px 1fr;
+  grid-template-rows: 80px 1fr;
   grid-template-columns: 360px 1fr;
 }
 
@@ -52,6 +79,7 @@ body {
   grid-column-start: 2;
   grid-column-end: 4;
   padding: 2em;
+  padding-top: 0em;
 }
 
 /* Navigation Panel */
