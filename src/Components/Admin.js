@@ -1,12 +1,15 @@
 import React from 'react';
 import { useState } from "react";
 import * as mutations from '../graphql/mutations';
+import * as queries from '../graphql/queries';
 import { generateClient } from 'aws-amplify/api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { SubjectData } from './SubjectData';
-import { stringToHash } from '../utils'
+import { SemesterData } from './SemesterData';
+import { CampusData } from './CampusData';
+import { stringToHash } from '../utils';
 
 const client = generateClient();
 
@@ -25,6 +28,23 @@ const Admin = () => {
     const [subject2, setSubject2] = useState("");
     const [number2, setNumber2] = useState("");
 
+    // Add class fields
+    const [subject3, setSubject3] = useState("");
+    const [number3, setNumber3] = useState("");
+    const [title3, setTitle3] = useState("");
+    const [instructor3, setInstructor3] = useState("");
+    const [semester3, setSemester3] = useState("");
+    const [time3, setTime3] = useState("");
+    const [campus3, setCampus3] = useState("");
+    const [capacity3, setCapacity3] = useState(0);
+    const [enrollment3, setEnrollment3] = useState(0);
+
+    // Remove class fields
+    const [subject4, setSubject4] = useState("");
+    const [number4, setNumber4] = useState("");
+    const [instructor4, setInstructor4] = useState("");
+    const [semester4, setSemester4] = useState("");
+
     function showSuccess(message) {
         toast.success(message, {
             position: toast.POSITION.TOP_RIGHT,
@@ -39,16 +59,25 @@ const Admin = () => {
 
     const handleAddCourse = (event) => {
         event.preventDefault();
-
         setTitle(title.trim())
         setDescription(description.trim())
-
         addCourse(subject, number, title, point, breath, elective, required, description);
     }
 
     const handleRemoveCourse = (event) => {
         event.preventDefault();
         removeCourse(subject, number);
+    }
+
+    const handleAddClass = (event) => {
+        event.preventDefault();
+        setTitle(title.trim())
+        addClass(subject3, number3, title3, instructor3, semester3, time3, campus3, capacity3, enrollment3);
+    }
+
+    const handleRemoveClass = (event) => {
+        event.preventDefault();
+        removeClass(subject4, number4, instructor4, semester4);
     }
 
     async function addCourse(subject, number, title, point, breath, elective, required, description) {
@@ -90,6 +119,62 @@ const Admin = () => {
             showSuccess(`Removed course ${subject} ${number}`)
         } catch (error) {
             showError(`Failed to remove course ${subject} ${number}`)
+        }
+    }
+
+    async function addClass(subject, number, title, instructor, semester, time, campus, capacity, enrollment) {
+        const courseId = stringToHash(subject + number);
+        const id = stringToHash(subject + number + instructor + semester);
+
+        try {
+            const course = await client.graphql({
+                query: queries.getCourse,
+                variables: { id: courseId }
+              });
+        } catch (error) {
+            showError(`Course ${subject} ${number} does not exist`)
+            return
+        }
+
+        const classDetails = {
+            id: id,
+            courseClassesId: courseId,
+            title: title,
+            instructor: instructor,
+            semester: semester,
+            time: time,
+            campus: campus,
+            capacity: capacity,
+            enrollment: enrollment,
+            description: ""
+        };
+
+        try {
+            const newClass = await client.graphql({
+                query: mutations.createClass,
+                variables: { input: classDetails }
+            });
+            showSuccess(`Added class ${subject} ${number} for ${semester} instructed by ${instructor}`)
+        } catch (error) {
+            console.log(error)
+            showError(`Failed to add class ${subject} ${number} for ${semester} instructed by ${instructor}`)
+        }
+    }
+
+    async function removeClass(subject, number, instructor, semester) {
+        const id = stringToHash(subject + number + instructor + semester)
+        const classDetails = {
+            id: id
+        };
+
+        try {
+            const deletedClass = await client.graphql({
+                query: mutations.deleteClass,
+                variables: { input: classDetails }
+            });
+            showSuccess(`Removed class ${subject} ${number} for ${semester} instructed by ${instructor}`)
+        } catch (error) {
+            showError(`Failed to remove class ${subject} ${number} for ${semester} instructed by ${instructor}`)
         }
     }
 
@@ -190,13 +275,132 @@ const Admin = () => {
                 </ul>
             </form>
 
+            <br />
 
             <h2>Course Offering</h2>
 
             {/* Add Class Section */}
-
+            <form onSubmit={handleAddClass}>
+                <ul>
+                    <li>
+                        <label>Subject</label>
+                        <span>
+                            <select defaultValue={""} required onChange={(e) => setSubject3(e.target.value)}>
+                                <option key="default" value="" disabled hidden></option>
+                                {SubjectData.map((subject) => (
+                                    <option key={subject.symbol} value={subject.symbol}>{subject.symbol}</option>
+                                ))}
+                            </select>
+                        </span>
+                    </li>
+                    <li>
+                        <label>Number</label>
+                        <span>
+                            <input type="number" min="1000" max="9999" required value={number3} onChange={(e) => setNumber3(e.target.value)} />
+                        </span>
+                    </li>
+                    <li>
+                        <label>Title</label>
+                        <span>
+                            <input type="text" size="40" value={title3} required onChange={(e) => setTitle3(e.target.value)} />
+                        </span>
+                    </li>
+                    <li>
+                        <label>Instructor</label>
+                        <span>
+                            <input type="text" size="20" value={instructor3} required onChange={(e) => setInstructor3(e.target.value)} />
+                        </span>
+                    </li>
+                    <li>
+                        <label>Semester</label>
+                        <span>
+                            <select defaultValue={""} required onChange={(e) => setSemester3(e.target.value)}>
+                                <option key="default" value="" disabled hidden></option>
+                                {SemesterData.map((semester) => (
+                                    <option key={semester.value} value={semester.value}>{semester.value}</option>
+                                ))}
+                            </select>
+                        </span>
+                    </li>
+                    <li>
+                        <label>Time</label>
+                        <span>
+                            <input type="text" size="20" value={time3} required onChange={(e) => setTime3(e.target.value)} />
+                        </span>
+                    </li>
+                    <li>
+                        <label>Campus</label>
+                        <span>
+                            <select defaultValue={""} required onChange={(e) => setCampus3(e.target.value)}>
+                                <option key="default" value="" disabled hidden></option>
+                                {CampusData.map((campus) => (
+                                    <option key={campus.value} value={campus.value}>{campus.value}</option>
+                                ))}
+                            </select>
+                        </span>
+                    </li>
+                    <li>
+                        <label>Capacity</label>
+                        <span>
+                            <input type="number" min="1" max="500" required value={capacity3} onChange={(e) => setCapacity3(e.target.value)} />
+                        </span>
+                    </li>
+                    <li>
+                        <label>Enrollment</label>
+                        <span>
+                            <input type="number" min="0" max="500" required value={enrollment3} onChange={(e) => setEnrollment3(e.target.value)} />
+                        </span>
+                    </li>
+                    <br />
+                    <li>
+                        <button type="submit">Add Class</button>
+                    </li>
+                </ul>
+            </form>
 
             {/* Remove Class Section */}
+            <form onSubmit={handleRemoveClass}>
+                <ul>
+                    <li>
+                        <label>Subject</label>
+                        <span>
+                            <select defaultValue={""} required onChange={(e) => setSubject4(e.target.value)}>
+                                <option key="default" value="" disabled hidden></option>
+                                {SubjectData.map((subject) => (
+                                    <option key={subject.symbol} value={subject.symbol}>{subject.symbol}</option>
+                                ))}
+                            </select>
+                        </span>
+                    </li>
+                    <li>
+                        <label>Number</label>
+                        <span>
+                            <input type="number" min="1000" max="9999" required value={number4} onChange={(e) => setNumber4(e.target.value)} />
+                        </span>
+                    </li>
+                    <li>
+                        <label>Instructor</label>
+                        <span>
+                            <input type="text" size="20" value={instructor4} required onChange={(e) => setInstructor4(e.target.value)} />
+                        </span>
+                    </li>
+                    <li>
+                        <label>Semester</label>
+                        <span>
+                            <select defaultValue={""} required onChange={(e) => setSemester4(e.target.value)}>
+                                <option key="default" value="" disabled hidden></option>
+                                {SemesterData.map((semester) => (
+                                    <option key={semester.value} value={semester.value}>{semester.value}</option>
+                                ))}
+                            </select>
+                        </span>
+                    </li>
+                    <br />
+                    <li>
+                        <button type="submit">Remove Class</button>
+                    </li>
+                </ul>
+            </form>
 
             <ToastContainer />
         </div>

@@ -23,7 +23,7 @@ const Course = () => {
 
   return (
     <div>
-      <h1>Courses</h1>
+      <h1>CVN Courses by Subject</h1>
 
       <ul>
         {course.map(item =>
