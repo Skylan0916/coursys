@@ -27,8 +27,12 @@ const Course = () => {
 
       <ul>
         {course.map(item =>
-          <li key={item.id}>{item.title}</li>)
-        }
+          <li key={item.id}>
+            <h3>{item.title}</h3>
+            <br/>
+            <h4>{item.description}</h4>
+          </li>
+        )}
       </ul>
 
     </div>

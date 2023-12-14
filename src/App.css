@@ -19,8 +19,9 @@ h2 {
 
 /* Form */
 form {
-  background-color: #DBE9FA;
+  background-color: #B3E0FF;
   text-align: center; 
+  border-radius: 20px;
 }
 
 form li {
