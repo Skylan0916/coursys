@@ -6,9 +6,9 @@ import { generateClient } from 'aws-amplify/api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { SubjectData } from './SubjectData';
-import { SemesterData } from './SemesterData';
-import { CampusData } from './CampusData';
+import { SubjectData } from '../data/Subject';
+import { SemesterData } from '../data/Semester';
+import { CampusData } from '../data/Campus';
 import { stringToHash } from '../utils';
 
 const client = generateClient();
