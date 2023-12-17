@@ -21,10 +21,6 @@ function App({ signOut, user }) {
 
       <Sidebar />
 
-      <div className="Path">
-        Path / Placeholder / text
-      </div>
-
       <div className="Session">
         Logged in as {user.username}. <a className="SignOut" onClick={signOut}>Sign out</a>
       </div>

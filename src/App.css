@@ -64,18 +64,8 @@ input[type='number']{
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-rows: 80px 1fr;
+  grid-template-rows: 60px 1fr;
   grid-template-columns: 360px 1fr;
-}
-
-/* Path message */
-.Path {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  text-align: left;
-  padding: 2em;
 }
 
 /* Session message */
