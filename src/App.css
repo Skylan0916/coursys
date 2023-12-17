@@ -7,14 +7,34 @@ body {
   padding: 0;
 }
 
-/* Heading */
+li {
+  list-style-type: none;
+}
+
 h1 {
   margin: 0;
 }
 
 h2 {
   margin: 0;
+}
+
+p {
+  font-size: 18px;
+}
+
+.Title {
+  margin: 0;
   text-align: center;
+}
+
+.Course {
+  margin-left: 5em;
+}
+
+.Course .Title {
+  color: #1E90FF;
+  margin-left: "25px";
 }
 
 /* Form */

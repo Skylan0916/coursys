@@ -11,7 +11,7 @@ const Admin = () => {
         <div>
             <h1>Administration</h1>
 
-            <h2>Course</h2>
+            <h2 className="Title">Course</h2>
 
             <AddCourse/>
 
@@ -19,7 +19,7 @@ const Admin = () => {
 
             <br />
 
-            <h2>Course Offering</h2>
+            <h2 className="Title">Course Offering</h2>
 
             <AddClass/>
 

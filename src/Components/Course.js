@@ -1,7 +1,8 @@
 import React from 'react';
-import { listClasses, listCourses } from '../graphql/queries';
+import { listCourses } from '../graphql/queries';
 import { useEffect, useState } from 'react';
 import { generateClient } from 'aws-amplify/api';
+import { SubjectData } from '../data/Subject';
 
 const client = generateClient();
 
@@ -21,6 +22,11 @@ const Course = () => {
     fetchCourse();
   }, []);
 
+  function getNameForSymbol(symbol) {
+    const subject = SubjectData.find(subject => subject.symbol === symbol);
+    return subject ? subject.name : "Symbol not found";
+  }
+
   return (
     <div>
       <h1>CVN Courses by Subject</h1>
@@ -28,9 +34,17 @@ const Course = () => {
       <ul>
         {course.map(item =>
           <li key={item.id}>
-            <h3>{item.title}</h3>
+            <h2>{getNameForSymbol(item.subject)}</h2>
+
+            <div className="Course">
+              <h3>
+                <span className="Title">{item.subject} {item.number}</span> - {item.title} ({item.point})
+              </h3>
+
+              <p>{item.description}</p>
+            </div>
+
             <br/>
-            <h4>{item.description}</h4>
           </li>
         )}
       </ul>
