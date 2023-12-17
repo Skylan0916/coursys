@@ -7,15 +7,25 @@ import { SubjectData } from '../data/Subject';
 const client = generateClient();
 
 const Course = () => {
-
   const [course, setCourse] = useState([]);
+
+  function compare(a, b) {
+    if (a.subject < b.subject) {
+      return -1;
+    }
+    if (a.subject > b.subject) {
+      return 1;
+    }
+    return 0;
+  }
 
   async function fetchCourse() {
     const { data } = await client.graphql({
       query: listCourses
     });
+
+    data.listCourses.items.sort(compare)
     setCourse(data.listCourses.items)
-    console.log(data);
   }
 
   useEffect(() => {
@@ -24,7 +34,7 @@ const Course = () => {
 
   function getNameForSymbol(symbol) {
     const subject = SubjectData.find(subject => subject.symbol === symbol);
-    return subject ? subject.name : "Symbol not found";
+    return subject ? subject.name : "Others";
   }
 
   return (
@@ -32,9 +42,13 @@ const Course = () => {
       <h1>CVN Courses by Subject</h1>
 
       <ul>
-        {course.map(item =>
+        {course.map((item, index) =>
           <li key={item.id}>
-            <h2>{getNameForSymbol(item.subject)}</h2>
+
+            {/* Display subject only if previous course is a different subject */}
+            {index === 0 || item.subject !== course[index - 1].subject ? (
+              <h2>{getNameForSymbol(item.subject)}</h2>
+            ) : null}
 
             <div className="Course">
               <h3>
@@ -44,7 +58,7 @@ const Course = () => {
               <p>{item.description}</p>
             </div>
 
-            <br/>
+            <br />
           </li>
         )}
       </ul>
