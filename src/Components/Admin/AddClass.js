@@ -35,33 +35,33 @@ function AddClass() {
                 query: queries.getCourse,
                 variables: { id: courseId }
             });
-        } catch (error) {
-            showError(`Course ${subject} ${number} does not exist`)
-            return
-        }
 
-        const classDetails = {
-            id: id,
-            courseClassesId: courseId,
-            title: title,
-            instructor: instructor,
-            semester: semester,
-            time: time,
-            campus: "",
-            capacity: capacity,
-            enrollment: enrollment,
-            description: ""
-        };
+            if (course.data.getCourse == null) {
+                showError(`Course ${subject} ${number} does not exist`);
+                return;
+            }
 
-        try {
+            const classDetails = {
+                id: id,
+                courseClassesId: courseId,
+                title: title,
+                instructor: instructor,
+                semester: semester,
+                time: time,
+                campus: "",
+                capacity: capacity,
+                enrollment: enrollment,
+                description: ""
+            };
+
             const newClass = await client.graphql({
                 query: mutations.createClass,
                 variables: { input: classDetails }
             });
-            showSuccess(`Added class ${subject} ${number} for ${semester} instructed by ${instructor}`)
+            showSuccess(`Added class ${subject} ${number} for ${semester} instructed by ${instructor}`);
         } catch (error) {
-            console.log(error)
-            showError(`Failed to add class ${subject} ${number} for ${semester} instructed by ${instructor}`)
+            console.log(error);
+            showError(`Failed to add class ${subject} ${number} for ${semester} instructed by ${instructor}`);
         }
     }
 

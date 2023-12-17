@@ -44,7 +44,7 @@ export const SubjectData = [
         symbol: "MECE"
     },
     {
-        name: "Data Science",
+        name: "Statistics",
         symbol: "STAT"
     }
 ]
