@@ -48,6 +48,11 @@ function SearchCourse() {
             courses[item.id] = name;
         }
 
+        if (Object.keys(courses).length === 0) {
+            showError(`No classes matched`);
+            return;
+        }
+
         // Get classes that meet the specified conditions
         try {
             const res = await client.graphql({
