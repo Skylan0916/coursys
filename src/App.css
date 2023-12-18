@@ -7,12 +7,27 @@ body {
   padding: 0;
 }
 
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  font-size: 20px;
+}
+
+tr {
+  text-align: left;
+  font-size: 20px;
+}
+
 li {
   list-style-type: none;
 }
 
 h1 {
   margin: 0;
+  margin-bottom: 1em;
 }
 
 h2 {
