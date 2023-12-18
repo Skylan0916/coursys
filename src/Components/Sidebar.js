@@ -3,7 +3,7 @@ import React from 'react';
 import { SidebarData } from '../data/Sidebar';
 import logo from '../data/Logo.png';
 
-function Sidebar() {
+function Sidebar({ username }) {
     return (
         <div className="Sidebar">
 
@@ -11,6 +11,14 @@ function Sidebar() {
 
             <ul className="SidebarList">
                 {SidebarData.map((val, key) => {
+                    // if (val.link === "/admin" && username != "admin") {
+                    //     return null;
+                    // }
+
+                    // if (val.link === "/progress" && username === "admin") {
+                    //     return null;
+                    // }
+
                     return (
                         <li
                             key={key}

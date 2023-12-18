@@ -9,8 +9,6 @@ import Sidebar from './Components/Sidebar';
 import Course from "./Components/Course";
 import Browse from "./Components/Browse";
 import Progress from "./Components/Progress";
-import Advising from "./Components/Advising";
-import Profile from "./Components/Profile";
 import Admin from "./Components/Admin";
 
 Amplify.configure(config);
@@ -19,7 +17,7 @@ function App({ signOut, user }) {
   return (
     <div className="App">
 
-      <Sidebar />
+      <Sidebar username={user.username} />
 
       <div className="Session">
         Logged in as {user.username}. <a className="SignOut" onClick={signOut}>Sign out</a>
@@ -31,8 +29,6 @@ function App({ signOut, user }) {
             <Route path="/course" element={<Course />} />
             <Route path="/browse" element={<Browse />} />
             <Route path="/progress" element={<Progress username={user.username} />} />
-            <Route path="/advising" element={<Advising />} />
-            <Route path="/profile" element={<Profile />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/" element={<Navigate replace to="/course" />} />
           </Routes>
