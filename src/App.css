@@ -38,6 +38,14 @@ p {
   font-size: 18px;
 }
 
+.EvenRow {
+  background-color: #F0F0F0;
+}
+
+.OddRow {
+  background-color: 	#FFFFFF;
+}
+
 .Title {
   margin: 0;
   text-align: center;
@@ -53,19 +61,19 @@ p {
 }
 
 /* Form */
-form {
+.Form {
   background-color: #B3E0FF;
   text-align: center; 
   border-radius: 20px;
 }
 
-form li {
+.Form li {
   display: inline-block;
   text-align: center;
   margin: 1em 1em
 }
 
-form li label {
+.Form li label {
   display: block;
   font-weight: bold;
 }

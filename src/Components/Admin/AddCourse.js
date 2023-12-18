@@ -54,7 +54,7 @@ function AddCourse() {
 
     return (
         <div>
-            < form onSubmit={handleAddCourse} >
+            < form onSubmit={handleAddCourse} className="Form">
                 <ul>
                     <li>
                         <label>Subject</label>

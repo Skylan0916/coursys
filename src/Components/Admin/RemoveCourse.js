@@ -36,7 +36,7 @@ function RemoveCourse() {
 
     return (
         <div>
-            <form onSubmit={handleRemoveCourse}>
+            <form onSubmit={handleRemoveCourse} className="Form">
                 <ul>
                     <li>
                         <label>Subject</label>

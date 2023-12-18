@@ -39,7 +39,7 @@ function RemoveClass() {
 
     return (
         <div>
-            <form onSubmit={handleRemoveClass}>
+            <form onSubmit={handleRemoveClass} className="Form">
                 <ul>
                     <li>
                         <label>Subject</label>

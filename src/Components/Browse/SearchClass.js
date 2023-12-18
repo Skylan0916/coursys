@@ -125,7 +125,7 @@ function SearchCourse() {
 
     return (
         <div>
-            <form onSubmit={handleSearch} >
+            <form onSubmit={handleSearch} className="Form">
                 <ul>
                     <li>
                         <label>Semester</label>
@@ -205,10 +205,9 @@ function SearchCourse() {
                         <th>Time</th>
                     </tr>
                 </thead>
-
                 <tbody>
-                    {classes.map((data) => (
-                        <tr key={data.id}>
+                    {classes.map((data, index) => (
+                        <tr key={data.id} className={index % 2 === 0 ? 'EvenRow' : 'OddRow'}>
                             <td>{data.semester}</td>
                             <td>{data.course}</td>
                             <td>{data.title}</td>

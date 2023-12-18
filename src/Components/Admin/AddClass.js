@@ -67,7 +67,7 @@ function AddClass() {
 
     return (
         <div>
-            <form onSubmit={handleAddClass}>
+            <form onSubmit={handleAddClass} className="Form">
                 <ul>
                     <li>
                         <label>Subject</label>
