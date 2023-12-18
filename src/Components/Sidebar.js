@@ -11,13 +11,13 @@ function Sidebar({ username }) {
 
             <ul className="SidebarList">
                 {SidebarData.map((val, key) => {
-                    // if (val.link === "/admin" && username != "admin") {
-                    //     return null;
-                    // }
+                    if (val.link === "/admin" && username != "admin") {
+                        return null;
+                    }
 
-                    // if (val.link === "/progress" && username === "admin") {
-                    //     return null;
-                    // }
+                    if (val.link === "/progress" && username === "admin") {
+                        return null;
+                    }
 
                     return (
                         <li
