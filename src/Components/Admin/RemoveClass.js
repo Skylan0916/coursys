@@ -31,7 +31,13 @@ function RemoveClass() {
                 query: mutations.deleteClass,
                 variables: { input: classDetails }
             });
-            showSuccess(`Removed class ${subject} ${number} for ${semester} instructed by ${instructor}`)
+
+            if (deletedClass.data.deleteClass === null) {
+                showError(`Class ${subject} ${number} for ${semester} instructed by ${instructor} does not exist`)
+            } else {
+                showSuccess(`Removed class ${subject} ${number} for ${semester} instructed by ${instructor}`)
+            }
+
         } catch (error) {
             showError(`Failed to remove class ${subject} ${number} for ${semester} instructed by ${instructor}`)
         }

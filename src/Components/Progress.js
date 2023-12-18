@@ -27,50 +27,63 @@ const Progress = ({ username }) => {
   const [number2, setNumber2] = useState("");
 
   async function fetchTaken() {
-    setTaken([]);
-    setCredit(0);
-    setBreathCredit(0);
-    setRequiredCredit(0);
-    setElectiveCredit(0);
+    try {
+      setTaken([]);
+      setCredit(0);
+      setBreathCredit(0);
+      setRequiredCredit(0);
+      setElectiveCredit(0);
 
-    let coursesTaken = [];
+      let coursesTaken = [];
 
-    const { data } = await client.graphql({
-      query: listTakens
-    });
+      const variables = {
+        filter: {
+          userId: {
+            eq: username
+          }
+        }
+      };
 
-    for (const item of data.listTakens.items) {
-      let courseTaken = {};
-
-      const course = await client.graphql({
-        query: queries.getCourse,
-        variables: { id: item.courseId }
+      const { data } = await client.graphql({
+        query: listTakens,
+        variables: variables
       });
 
-      courseTaken.name = course.data.getCourse.subject + ' ' + course.data.getCourse.number + ' - ' + course.data.getCourse.title
-      courseTaken.breath = course.data.getCourse.is_breath;
-      courseTaken.required = course.data.getCourse.is_required;
-      courseTaken.elective = course.data.getCourse.is_elective;
-      courseTaken.point = course.data.getCourse.point;
-      courseTaken.status = item.status;
-      coursesTaken.push(courseTaken);
+      for (const item of data.listTakens.items) {
+        let courseTaken = {};
 
-      // Add the corresponding credit
-      if (courseTaken.status == "Pass") {
-        setCredit(prevCredit => prevCredit + 3);
-        if (courseTaken.elective) {
-          setElectiveCredit(prevCredit => prevCredit + 3);
-        }
-        if (courseTaken.required) {
-          setRequiredCredit(prevCredit => prevCredit + 3);
-        }
-        if (courseTaken.breath) {
-          setBreathCredit(prevCredit => prevCredit + 3);
+        const course = await client.graphql({
+          query: queries.getCourse,
+          variables: { id: item.courseId }
+        });
+
+        courseTaken.name = course.data.getCourse.subject + ' ' + course.data.getCourse.number + ' - ' + course.data.getCourse.title
+        courseTaken.breath = course.data.getCourse.is_breath;
+        courseTaken.required = course.data.getCourse.is_required;
+        courseTaken.elective = course.data.getCourse.is_elective;
+        courseTaken.point = course.data.getCourse.point;
+        courseTaken.status = item.status;
+        coursesTaken.push(courseTaken);
+
+        // Add the corresponding credit
+        if (courseTaken.status == "Pass") {
+          setCredit(prevCredit => prevCredit + 3);
+          if (courseTaken.elective) {
+            setElectiveCredit(prevCredit => prevCredit + 3);
+          }
+          if (courseTaken.required) {
+            setRequiredCredit(prevCredit => prevCredit + 3);
+          }
+          if (courseTaken.breath) {
+            setBreathCredit(prevCredit => prevCredit + 3);
+          }
         }
       }
-    }
 
-    setTaken(coursesTaken);
+      setTaken(coursesTaken);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
@@ -139,7 +152,12 @@ const Progress = ({ username }) => {
         query: mutations.deleteTaken,
         variables: { input: takenDetails }
       });
-      showSuccess(`Removed course ${subject} ${number}`)
+      
+      if (deletedTaken.data.deleteTaken === null) {
+        showError(`Course ${subject} ${number} does not exist`);
+      } else {
+        showSuccess(`Removed course ${subject} ${number}`)
+      }
 
     } catch (error) {
       console.log(error);

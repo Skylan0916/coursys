@@ -28,7 +28,13 @@ function RemoveCourse() {
                 query: mutations.deleteCourse,
                 variables: { input: courseDetails }
             });
-            showSuccess(`Removed course ${subject} ${number}`)
+
+            if (deletedCourse.data.deleteCourse === null) {
+                showError(`Course ${subject} ${number} does not exist`)
+            } else {
+                showSuccess(`Removed course ${subject} ${number}`)
+            }
+
         } catch (error) {
             showError(`Failed to remove course ${subject} ${number}`)
         }
