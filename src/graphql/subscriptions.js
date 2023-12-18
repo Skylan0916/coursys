@@ -193,3 +193,54 @@ export const onDeleteClass = /* GraphQL */ `
     }
   }
 `;
+export const onCreateTaken = /* GraphQL */ `
+  subscription OnCreateTaken(
+    $filter: ModelSubscriptionTakenFilterInput
+    $owner: String
+  ) {
+    onCreateTaken(filter: $filter, owner: $owner) {
+      id
+      userId
+      courseId
+      status
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onUpdateTaken = /* GraphQL */ `
+  subscription OnUpdateTaken(
+    $filter: ModelSubscriptionTakenFilterInput
+    $owner: String
+  ) {
+    onUpdateTaken(filter: $filter, owner: $owner) {
+      id
+      userId
+      courseId
+      status
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onDeleteTaken = /* GraphQL */ `
+  subscription OnDeleteTaken(
+    $filter: ModelSubscriptionTakenFilterInput
+    $owner: String
+  ) {
+    onDeleteTaken(filter: $filter, owner: $owner) {
+      id
+      userId
+      courseId
+      status
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;

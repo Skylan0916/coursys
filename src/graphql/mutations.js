@@ -193,3 +193,54 @@ export const deleteClass = /* GraphQL */ `
     }
   }
 `;
+export const createTaken = /* GraphQL */ `
+  mutation CreateTaken(
+    $input: CreateTakenInput!
+    $condition: ModelTakenConditionInput
+  ) {
+    createTaken(input: $input, condition: $condition) {
+      id
+      userId
+      courseId
+      status
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const updateTaken = /* GraphQL */ `
+  mutation UpdateTaken(
+    $input: UpdateTakenInput!
+    $condition: ModelTakenConditionInput
+  ) {
+    updateTaken(input: $input, condition: $condition) {
+      id
+      userId
+      courseId
+      status
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const deleteTaken = /* GraphQL */ `
+  mutation DeleteTaken(
+    $input: DeleteTakenInput!
+    $condition: ModelTakenConditionInput
+  ) {
+    deleteTaken(input: $input, condition: $condition) {
+      id
+      userId
+      courseId
+      status
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;

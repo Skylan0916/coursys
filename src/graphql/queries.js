@@ -114,3 +114,39 @@ export const listClasses = /* GraphQL */ `
     }
   }
 `;
+export const getTaken = /* GraphQL */ `
+  query GetTaken($id: ID!) {
+    getTaken(id: $id) {
+      id
+      userId
+      courseId
+      status
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const listTakens = /* GraphQL */ `
+  query ListTakens(
+    $filter: ModelTakenFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTakens(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        userId
+        courseId
+        status
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;

@@ -8,4 +8,6 @@ export { default as ClassCreateForm } from "./ClassCreateForm";
 export { default as ClassUpdateForm } from "./ClassUpdateForm";
 export { default as CourseCreateForm } from "./CourseCreateForm";
 export { default as CourseUpdateForm } from "./CourseUpdateForm";
+export { default as TakenCreateForm } from "./TakenCreateForm";
+export { default as TakenUpdateForm } from "./TakenUpdateForm";
 export { default as studioTheme } from "./studioTheme";
