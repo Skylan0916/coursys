@@ -19,7 +19,6 @@ export const getCourse = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
@@ -43,7 +42,6 @@ export const listCourses = /* GraphQL */ `
         is_elective
         createdAt
         updatedAt
-        owner
         __typename
       }
       nextToken
@@ -75,13 +73,11 @@ export const getClass = /* GraphQL */ `
         is_elective
         createdAt
         updatedAt
-        owner
         __typename
       }
       createdAt
       updatedAt
       courseClassesId
-      owner
       __typename
     }
   }
@@ -106,7 +102,6 @@ export const listClasses = /* GraphQL */ `
         createdAt
         updatedAt
         courseClassesId
-        owner
         __typename
       }
       nextToken
@@ -123,7 +118,6 @@ export const getTaken = /* GraphQL */ `
       status
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
@@ -142,7 +136,6 @@ export const listTakens = /* GraphQL */ `
         status
         createdAt
         updatedAt
-        owner
         __typename
       }
       nextToken

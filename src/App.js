@@ -30,7 +30,7 @@ function App({ signOut, user }) {
           <Routes>
             <Route path="/course" element={<Course />} />
             <Route path="/browse" element={<Browse />} />
-            <Route path="/progress" element={<Progress />} />
+            <Route path="/progress" element={<Progress username={user.username} />} />
             <Route path="/advising" element={<Advising />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/admin" element={<Admin />} />

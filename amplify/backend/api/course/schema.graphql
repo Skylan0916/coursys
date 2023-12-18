@@ -1,4 +1,4 @@
-type Course @model @auth(rules: [{ allow: owner }]) {
+type Course @model @auth(rules: [{ allow: private }]) {
   id: ID!
   subject: String!
   number: Int!
@@ -11,7 +11,7 @@ type Course @model @auth(rules: [{ allow: owner }]) {
   classes: [Class] @hasMany
 }
 
-type Class @model @auth(rules: [{ allow: owner }]) {
+type Class @model @auth(rules: [{ allow: private }]) {
   id: ID!
   title: String!
   instructor: String!
@@ -24,7 +24,7 @@ type Class @model @auth(rules: [{ allow: owner }]) {
   course: Course @belongsTo
 }
 
-type Taken @model @auth(rules: [{ allow: owner }]) {
+type Taken @model @auth(rules: [{ allow: private }]) {
   id: ID!
   userId: String!
   courseId: String!

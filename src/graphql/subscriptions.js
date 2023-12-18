@@ -2,11 +2,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateCourse = /* GraphQL */ `
-  subscription OnCreateCourse(
-    $filter: ModelSubscriptionCourseFilterInput
-    $owner: String
-  ) {
-    onCreateCourse(filter: $filter, owner: $owner) {
+  subscription OnCreateCourse($filter: ModelSubscriptionCourseFilterInput) {
+    onCreateCourse(filter: $filter) {
       id
       subject
       number
@@ -22,17 +19,13 @@ export const onCreateCourse = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
 `;
 export const onUpdateCourse = /* GraphQL */ `
-  subscription OnUpdateCourse(
-    $filter: ModelSubscriptionCourseFilterInput
-    $owner: String
-  ) {
-    onUpdateCourse(filter: $filter, owner: $owner) {
+  subscription OnUpdateCourse($filter: ModelSubscriptionCourseFilterInput) {
+    onUpdateCourse(filter: $filter) {
       id
       subject
       number
@@ -48,17 +41,13 @@ export const onUpdateCourse = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
 `;
 export const onDeleteCourse = /* GraphQL */ `
-  subscription OnDeleteCourse(
-    $filter: ModelSubscriptionCourseFilterInput
-    $owner: String
-  ) {
-    onDeleteCourse(filter: $filter, owner: $owner) {
+  subscription OnDeleteCourse($filter: ModelSubscriptionCourseFilterInput) {
+    onDeleteCourse(filter: $filter) {
       id
       subject
       number
@@ -74,17 +63,13 @@ export const onDeleteCourse = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
 `;
 export const onCreateClass = /* GraphQL */ `
-  subscription OnCreateClass(
-    $filter: ModelSubscriptionClassFilterInput
-    $owner: String
-  ) {
-    onCreateClass(filter: $filter, owner: $owner) {
+  subscription OnCreateClass($filter: ModelSubscriptionClassFilterInput) {
+    onCreateClass(filter: $filter) {
       id
       title
       instructor
@@ -106,23 +91,18 @@ export const onCreateClass = /* GraphQL */ `
         is_elective
         createdAt
         updatedAt
-        owner
         __typename
       }
       createdAt
       updatedAt
       courseClassesId
-      owner
       __typename
     }
   }
 `;
 export const onUpdateClass = /* GraphQL */ `
-  subscription OnUpdateClass(
-    $filter: ModelSubscriptionClassFilterInput
-    $owner: String
-  ) {
-    onUpdateClass(filter: $filter, owner: $owner) {
+  subscription OnUpdateClass($filter: ModelSubscriptionClassFilterInput) {
+    onUpdateClass(filter: $filter) {
       id
       title
       instructor
@@ -144,23 +124,18 @@ export const onUpdateClass = /* GraphQL */ `
         is_elective
         createdAt
         updatedAt
-        owner
         __typename
       }
       createdAt
       updatedAt
       courseClassesId
-      owner
       __typename
     }
   }
 `;
 export const onDeleteClass = /* GraphQL */ `
-  subscription OnDeleteClass(
-    $filter: ModelSubscriptionClassFilterInput
-    $owner: String
-  ) {
-    onDeleteClass(filter: $filter, owner: $owner) {
+  subscription OnDeleteClass($filter: ModelSubscriptionClassFilterInput) {
+    onDeleteClass(filter: $filter) {
       id
       title
       instructor
@@ -182,64 +157,50 @@ export const onDeleteClass = /* GraphQL */ `
         is_elective
         createdAt
         updatedAt
-        owner
         __typename
       }
       createdAt
       updatedAt
       courseClassesId
-      owner
       __typename
     }
   }
 `;
 export const onCreateTaken = /* GraphQL */ `
-  subscription OnCreateTaken(
-    $filter: ModelSubscriptionTakenFilterInput
-    $owner: String
-  ) {
-    onCreateTaken(filter: $filter, owner: $owner) {
+  subscription OnCreateTaken($filter: ModelSubscriptionTakenFilterInput) {
+    onCreateTaken(filter: $filter) {
       id
       userId
       courseId
       status
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
 `;
 export const onUpdateTaken = /* GraphQL */ `
-  subscription OnUpdateTaken(
-    $filter: ModelSubscriptionTakenFilterInput
-    $owner: String
-  ) {
-    onUpdateTaken(filter: $filter, owner: $owner) {
+  subscription OnUpdateTaken($filter: ModelSubscriptionTakenFilterInput) {
+    onUpdateTaken(filter: $filter) {
       id
       userId
       courseId
       status
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
 `;
 export const onDeleteTaken = /* GraphQL */ `
-  subscription OnDeleteTaken(
-    $filter: ModelSubscriptionTakenFilterInput
-    $owner: String
-  ) {
-    onDeleteTaken(filter: $filter, owner: $owner) {
+  subscription OnDeleteTaken($filter: ModelSubscriptionTakenFilterInput) {
+    onDeleteTaken(filter: $filter) {
       id
       userId
       courseId
       status
       createdAt
       updatedAt
-      owner
       __typename
     }
   }

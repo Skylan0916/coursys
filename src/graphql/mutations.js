@@ -22,7 +22,6 @@ export const createCourse = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
@@ -48,7 +47,6 @@ export const updateCourse = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
@@ -74,7 +72,6 @@ export const deleteCourse = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
@@ -106,13 +103,11 @@ export const createClass = /* GraphQL */ `
         is_elective
         createdAt
         updatedAt
-        owner
         __typename
       }
       createdAt
       updatedAt
       courseClassesId
-      owner
       __typename
     }
   }
@@ -144,13 +139,11 @@ export const updateClass = /* GraphQL */ `
         is_elective
         createdAt
         updatedAt
-        owner
         __typename
       }
       createdAt
       updatedAt
       courseClassesId
-      owner
       __typename
     }
   }
@@ -182,13 +175,11 @@ export const deleteClass = /* GraphQL */ `
         is_elective
         createdAt
         updatedAt
-        owner
         __typename
       }
       createdAt
       updatedAt
       courseClassesId
-      owner
       __typename
     }
   }
@@ -205,7 +196,6 @@ export const createTaken = /* GraphQL */ `
       status
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
@@ -222,7 +212,6 @@ export const updateTaken = /* GraphQL */ `
       status
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
@@ -239,7 +228,6 @@ export const deleteTaken = /* GraphQL */ `
       status
       createdAt
       updatedAt
-      owner
       __typename
     }
   }
