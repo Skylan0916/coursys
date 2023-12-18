@@ -178,3 +178,12 @@ input[type='number']{
   place-items: center start;
   font-size: 20px;
 }
+
+/* Progress Section */
+.ProgressTable {
+  margin-left: 4em;
+}
+
+.ProgressCol {
+  width: 800px;
+}
