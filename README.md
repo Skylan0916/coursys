@@ -1,6 +1,11 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Amplify Deployment](https://main.d1cjz4fi0scgrw.amplifyapp.com)
+[Youtube Demo](https://www.youtube.com/watch?v=IYOT66OC_rA)
+
+Demo Accounts:
+admin, 123qweasd
+student, 123qweasd
 
 ## Available Scripts
 
