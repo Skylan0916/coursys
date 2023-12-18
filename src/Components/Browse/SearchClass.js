@@ -136,7 +136,7 @@ function SearchCourse() {
                         <label>Semester</label>
                         <span>
                             <select defaultValue={""} onChange={(e) => setSemester(e.target.value)}>
-                                <option key="default" value="" disabled hidden></option>
+                                <option key="default" value=""></option>
                                 {SemesterData.map((semester) => (
                                     <option key={semester.value} value={semester.value}>{semester.value}</option>
                                 ))}
