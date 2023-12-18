@@ -1,10 +1,10 @@
 # Getting Started with Create React App
 
-[Amplify Deployment](https://main.d1cjz4fi0scgrw.amplifyapp.com)
-[Youtube Demo](https://www.youtube.com/watch?v=IYOT66OC_rA)
+[Amplify Deployment](https://main.d1cjz4fi0scgrw.amplifyapp.com)\
+[Youtube Demo](https://www.youtube.com/watch?v=IYOT66OC_rA)\
 
-Demo Accounts:
-admin, 123qweasd
+Demo Accounts:\
+admin, 123qweasd\
 student, 123qweasd
 
 ## Available Scripts
